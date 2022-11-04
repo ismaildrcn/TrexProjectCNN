@@ -1,12 +1,28 @@
 import keyboard
 import uuid
 import time
+import os
 from PIL import Image
 from mss import mss
 
 """
 https://fivesjs.skipser.com/trex-game/
 """
+
+files = os.listdir()
+print(files)
+Path = "./img"
+try:
+    os.chdir(Path)
+    print("img folder already exists")
+
+    else:
+        directory = "img"
+        dirPath = os.getcwd()
+        path = os.path.join(dirPath, directory)
+        os.mkdir(path)
+
+
 
 mon = {"top": 380, "left": 740, "width": 280, "height": 115}
 sct = mss()
