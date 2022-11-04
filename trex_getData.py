@@ -9,20 +9,6 @@ from mss import mss
 https://fivesjs.skipser.com/trex-game/
 """
 
-files = os.listdir()
-print(files)
-Path = "./img"
-try:
-    os.chdir(Path)
-    print("img folder already exists")
-
-    else:
-        directory = "img"
-        dirPath = os.getcwd()
-        path = os.path.join(dirPath, directory)
-        os.mkdir(path)
-
-
 
 mon = {"top": 380, "left": 740, "width": 280, "height": 115}
 sct = mss()
@@ -34,9 +20,10 @@ def record_screen(record_id, key):
     
     i += 1
     print("{}: {}".format(key, i))
-    img = sct.grap(mon)
+    img = sct.grab(mon)
     im = Image.frombytes("RGB", img.size, img.rgb)
-    im.save("./img/{}_{}_{}.png".format(key, record_id, i))
+    imName = "./img/{}_{}_{}.png".format(key, record_id, i)
+    im.save(imName)
     
     
 is_exit = False
@@ -58,11 +45,11 @@ while True:
             record_screen(record_id, "up")
             time.sleep(0.1)
             
-        else if keyboard.is_pressed(keyboard.KEY_DOWN):
+        elif keyboard.is_pressed(keyboard.KEY_DOWN):
             record_screen(record_id, "down")
             time.sleep(0.1)
             
-        else if keyboard.is_pressed("right"):
+        elif keyboard.is_pressed("right"):
             record_screen(record_id, "right")
             time.sleep(0.1)
             
